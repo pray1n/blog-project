@@ -4,23 +4,30 @@ import {getCategories, getBlogs, postBlog} from './controllers/api';
 import Categories from './views/categories';
 import Blogs from './views/blogs';
 import SpecialBlogs from './views/specialblogs';
+import Blogdetail from './views/blogs_detail';
+import Loader from './views/loader';
 
 function App() {
   const [data, setData] = useState({categories: [], blogs: [], specialblogs: []});
+  const [isDataLoading, setIsDataLoading] = useState(true);
 
   async function readData() {
     const blogs = await getBlogs();
     const categories = await getCategories();
     const specialblogs = blogs.filter(blog => {return blog.special === true;});
-    console.log(specialblogs);
+    //console.log(specialblogs);
     setData((prev) => {return {...prev, categories, blogs, specialblogs}});
+    if(data)
+      setIsDataLoading(false);
   }
 
   useEffect(() => {
     readData();
   }, [])
 
-  return (
+  return isDataLoading ? (
+    <Loader />
+  ) : (
     <div id="wrapper">
       <header>
         <h2>Travel blog</h2>
@@ -32,7 +39,10 @@ function App() {
           <Categories categories={data.categories} />
         </nav>
         <main>
-          <Blogs blogs={data.blogs} />
+        <Routes>
+          <Route path='/' element={<Blogs blogs={data.blogs} />} />
+          <Route path="/:id" element={<Blogdetail blogs={data.blogs} />} />
+        </Routes>
         </main>
         <aside>
             <h3>Special offers</h3>

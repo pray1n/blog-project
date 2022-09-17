@@ -37,4 +37,43 @@ async function patchTable(table, fieldMapping, id, req) {
     return pool.query(sql, updateQuery)
 }
 
-function getBlogs() {}
+function getBlogs() {
+    return pool
+        .query(
+            `
+        SELECT title, date_time, author_name, content_text, picture, special, category_id
+        FROM blog
+        `
+        )
+        .then((data) => {
+            return data.rows
+        })
+}
+function insertBlogPost(update) {
+    return pool
+        .query(
+            `
+    insert into blog (title, date_time, author_name, content_text, picture, special, category_id) 
+    values ($1, $2, $3,$4,$5,$6,$7)
+    returning *;
+    `,
+            [
+                update.title,
+                date_time,
+                author_name,
+                content_text,
+                picture,
+                special,
+                category_id,
+            ]
+        )
+        .then((data) => {
+            return data.rows
+        })
+}
+
+module.exports = {
+    patchTable,
+    getBlogs,
+    insertBlogPost,
+}

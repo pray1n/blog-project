@@ -1,7 +1,9 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
 app.set('view engine', 'ejs');
 app.use(express.static('build'));
+app.use(cors());
 app.use(express.json());
 const blogs = require('./models/blogs');
 const categories = require('./models/categories');

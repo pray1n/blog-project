@@ -1,13 +1,16 @@
-import {Routes, Route} from 'react-router-dom'; //needed?
+import {Routes, Route} from 'react-router-dom';
 import {useState, useEffect} from 'react';
+import {getCategories, getBlogs, postBlog} from './controllers/api';
 
 function App() {
   const [data, setData] = useState({categories: [], blogs: []});
 
   async function readData() {
-    // const blogs = await getBlogs();
-    // console.log(blogs);
-    // setData((prev) => {return {...prev, blogs}});
+    const blogs = await getBlogs();
+    const categories = await getCategories();
+    console.log(blogs);
+    console.log(categories);
+    setData((prev) => {return {...prev, categories, blogs}});
   }
 
   useEffect(() => {

@@ -127,11 +127,11 @@ INSERT into blog (title, date_time, author_name, content_text, picture, special,
     'HOTEL TIPP SCHWEIZ',
     '2022-5-09',
     'Maurice',
-    'Wenn ich an Norditalien denke, kommt mir als allererstes Venedig in den Sinn. Beziehungsweise war das bisher so. Dass es aber rundum die Lagune von Venedig so viel mehr zu entdecken gibt und sich darunter wahre Schätze verbergen, das habe ich erst jetzt gelernt.
+    'Mittlerweile haben wir uns so sehr in die Schweizer Berge verliebt, dass wir immer wieder gerne herkommen. Egal ob zum Wandern oder Skifahren. Im letzten Jahr waren wir bereits im Winter in Laax. Aber da hat es so geschneit, dass wir nicht mal die Berge gesehen haben. Also mussten wir nun dringend wieder im Winter nach Laax reisen. Und wir hatten Glück mit dem Wetter. Es war traumhaft.
 
-Klar, Venedig ist jedem ein Begriff und für viele auch ein Traumziel. Warum es sich definitiv lohnt, ein paar mehr Tage in der Region einzuplanen und warum der Campingplatz Marina di Venezia der perfekte Ausgangspunkt dafür ist, erfährst du in diesem Artikel.'
+Letztes mal kamen wir im Hotel Peaks Place unter. Diesmal testeten wir das ganz neu renovierte Riders Hotel, vorher Riders Palace genannt. Im folgenden Artikel beschreiben wir dir unsere Riders Hotel Erfahrungen und was du sonst soin Laax machen solltest.'
 ,
-    'https://wetraveltheworld.de/wp-content/uploads/2018/06/lagune-von-venedig-marina-di-venezia-ausfluege-tipps.jpg',
-    false,
-    3
+    'https://wetraveltheworld.de/wp-content/uploads/2018/01/rider-hotel-laax-schweiz.jpg',
+    true,
+    1
 );

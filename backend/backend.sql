@@ -51,7 +51,7 @@ INSERT into blog (title, date_time, author_name, content_text, picture, special,
     '2022-2-04',
     'Andrea',
     'Tallinn ist nicht nur die Hauptstadt Estlands, sie ist darüber hinaus auch das kulturelle Zentrum des Landes. Die mittelalterliche Altstadt gehört zum UNESCO Weltkulturerbe. Tallinn empfängt Besucher herzlich und ist ein hervorragender Gastgeber: lebhaft, am Puls der Zeit, historisch gewachsen, alt und neu, bewegt und stark, lebensfroh, gebildet, vielseitig und wunderschön bietet Tallinn Besuchern alles, was das Herz begehrt',
-    '<img alt="seychellen" src="https://wetraveltheworld.de/wp-content/uploads/2018/03/tallinn-sehenswuerdigkeiten_.jpg" width=150" height="70">',
+    'https://wetraveltheworld.de/wp-content/uploads/2018/03/tallinn-sehenswuerdigkeiten_.jpg',
     false,
     3
 );

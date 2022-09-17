@@ -4,7 +4,7 @@ app.set('view engine', 'ejs');
 app.use(express.static('build'));
 app.use(express.json());
 
-const port = process.env.PORT || 8080;
+const port = process.env.PG_PORT || 8080;
 
 const blogs = [
     {

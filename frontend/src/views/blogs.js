@@ -3,7 +3,7 @@ export default function Blogs({blogs}) {
         return (
             <section className="preview" key={blog.id}>
                 <h3>{blog.title}</h3>
-                <p>{blog.content_text}</p>
+                <p>{blog.content_text.substring(0, 100)} ...</p>
                 <a href="#">Read more</a>
             </section>
         );

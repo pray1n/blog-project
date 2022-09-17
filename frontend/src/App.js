@@ -3,16 +3,17 @@ import {useState, useEffect} from 'react';
 import {getCategories, getBlogs, postBlog} from './controllers/api';
 import Categories from './views/categories';
 import Blogs from './views/blogs';
+import SpecialBlogs from './views/specialblogs';
 
 function App() {
-  const [data, setData] = useState({categories: [], blogs: []});
+  const [data, setData] = useState({categories: [], blogs: [], specialblogs: []});
 
   async function readData() {
     const blogs = await getBlogs();
     const categories = await getCategories();
-    console.log(blogs);
-    console.log(categories);
-    setData((prev) => {return {...prev, categories, blogs}});
+    const specialblogs = blogs.filter(blog => {return blog.special === true;});
+    console.log(specialblogs);
+    setData((prev) => {return {...prev, categories, blogs, specialblogs}});
   }
 
   useEffect(() => {
@@ -35,18 +36,7 @@ function App() {
         </main>
         <aside>
             <h3>Special offers</h3>
-            <section className="special">
-                <h4>Special Blog 1</h4>
-                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr ....</p>
-            </section>
-            <section className="special">
-                <h4>Special Blog 2</h4>
-                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr ....</p>
-            </section>
-            <section className="special">
-                <h4>Special Blog 3</h4>
-                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr ....</p>
-            </section>
+            <SpecialBlogs specialblogs={data.specialblogs} />
         </aside>
       </div>
     </div>

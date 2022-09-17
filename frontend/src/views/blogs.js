@@ -1,10 +1,13 @@
+import { NavLink } from "react-router-dom";
+
 export default function Blogs({blogs}) {
     const li_blogs = blogs.map((blog) => {
+        const blog_to = "/" + blog.id;
         return (
             <section className="preview" key={blog.id}>
                 <h3>{blog.title}</h3>
                 <p>{blog.content_text.substring(0, 100)} ...</p>
-                <a href="#">Read more</a>
+                <NavLink className="link" to={blog_to}>Read more</NavLink>
             </section>
         );
     });

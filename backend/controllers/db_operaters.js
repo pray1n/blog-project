@@ -1,4 +1,4 @@
-const { Pool } = require('pg')
+const { Pool } = require('pg');
 
 const pool = new Pool({
     user: process.env.PG_USER,
@@ -17,59 +17,50 @@ async function patchTable(table, fieldMapping, id, req) {
             value: req.body[param],
         }
     })
-    let updateQuery = [id]
-    let updateFields = []
+    let updateQuery = [id];
+    let updateFields = [];
     updates.forEach((element, index) => {
         updateQuery.push(element.value)
         updateFields.push(element.field + '=$' + (index + 2))
     })
 
-    console.log('req.body', req.body)
-    console.log('updateQuery', updateQuery)
-    console.log('updateFields', updateFields)
+    console.log('req.body', req.body);
+    console.log('updateQuery', updateQuery);
+    console.log('updateFields', updateFields);
 
     sql = `
-    UPDATE ${table} 
-    SET ${updateFields.toString(', ')} 
-    WHERE id=$1`
+        UPDATE ${table} 
+        SET ${updateFields.toString(', ')} 
+        WHERE id=$1`;
 
-    console.log('sql', sql)
-    return pool.query(sql, updateQuery)
+    return pool.query(sql, updateQuery);
 }
 
-function getBlogs() {
-    return pool
-        .query(
-            `
-        SELECT title, date_time, author_name, content_text, picture, special, category_id
-        FROM blog
-        `
-        )
+async function getBlogs() {
+    return pool.query(`SELECT title, date_time, author_name, content_text, picture, special, category_id FROM blog`)
         .then((data) => {
-            return data.rows
+            return data.rows;
         })
 }
-function insertBlogPost(update) {
-    return pool
-        .query(
-            `
+
+async function insertBlogPost(update) {
+    return pool.query(`
     insert into blog (title, date_time, author_name, content_text, picture, special, category_id) 
     values ($1, $2, $3,$4,$5,$6,$7)
-    returning *;
-    `,
-            [
-                update.title,
-                date_time,
-                author_name,
-                content_text,
-                picture,
-                special,
-                category_id,
-            ]
-        )
-        .then((data) => {
-            return data.rows
-        })
+    returning *;`,
+        [
+            update.title,
+            date_time,
+            author_name,
+            content_text,
+            picture,
+            special,
+            category_id,
+        ]
+    )
+    .then((data) => {
+        return data.rows;
+    })
 }
 
 module.exports = {

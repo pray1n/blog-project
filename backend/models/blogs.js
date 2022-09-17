@@ -17,6 +17,15 @@ const blogs = [
         picture:'<img alt="seychellen" src="https://wetraveltheworld.de/wp-content/uploads/2021/11/augsburg-sehenswuerdigkeiten-an-einem-tag.jpg" width=150" height="70">',
         special: false,
         category_id: 2
+    },
+    {
+        title:"TALLINN IN 3 TAGEN: DIE 15 BESTEN DINGE, DIE DU IN TALLINN GESEHEN UND GEMACHT HABEN MUSST",
+        datetime:'2022-2-04',
+        author_name:'Andrea',
+        content_text:'Tallinn ist nicht nur die Hauptstadt Estlands, sie ist darüber hinaus auch das kulturelle Zentrum des Landes.',
+        picture:'<img alt="seychellen" src="https://wetraveltheworld.de/wp-content/uploads/2018/03/tallinn-sehenswuerdigkeiten_.jpg" width=150" height="70">',
+        special: false,
+        category_id: 3
     }
 ]
 

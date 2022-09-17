@@ -21,7 +21,7 @@ drop table blog;
 
 INSERT into category (name) values ('All-Inclusive');
 INSERT into category (name) values ('Beach holiday');
-INSERT into category (name) values ('City tour');
+INSERT into category (name) values ('City tours');
 
 INSERT into blog (title, date_time, author_name, content_text, picture, special, category_id) values
 (

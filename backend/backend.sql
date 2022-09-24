@@ -15,6 +15,8 @@ create table blog (
 );
 
 select * from category;
+SELECT id, name from category
+SELECT id, title, date_time, author_name, content_text, picture, special, category_name FROM blog
 
 select * from blog;
 drop table blog;

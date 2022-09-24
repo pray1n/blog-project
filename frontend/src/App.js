@@ -4,11 +4,14 @@ import {getCategories, getBlogs, postBlog} from './controllers/api';
 import Categories from './views/categories';
 import Blogs from './views/blogs';
 import SpecialBlogs from './views/specialblogs';
+import AllInclusiveBlogs from './views/allInclusiveBlogs';
+
 import Blogdetail from './views/blogs_detail';
 import Loader from './views/loader';
 
+
 function App() {
-  const [data, setData] = useState({categories: [], blogs: [], specialblogs: []});
+  const [data, setData] = useState({categories: [], blogs: [], specialblogs: [],allInclusiveBlogs: []});
   const [isDataLoading, setIsDataLoading] = useState(true);
 
   async function readData() {
@@ -16,10 +19,10 @@ function App() {
     const categories = await getCategories();
     const specialblogs = blogs.filter(blog => {return blog.special === true;});
     const nonspecialblogs = blogs.filter(blog => {return blog.special === false;});
-    //const allInclusiveBlogs = categories.filter(categories => {return categories.name === 'All-Inclusive';});
+    const allInclusiveBlogs = blogs.filter(blog => {return blog.category_name === "all-inclusive";});
 
-    //console.log(specialblogs);
-    setData((prev) => {return {...prev, categories, blogs, nonspecialblogs, specialblogs}});
+    
+    setData((prev) => {return {...prev, categories, blogs, nonspecialblogs, specialblogs, allInclusiveBlogs}});
     if(data)
       setIsDataLoading(false);
   }
@@ -43,7 +46,7 @@ function App() {
         </nav>
         <main>
         <Routes>
-          <Route path='/all-inclusive' element={<Blogs blogs={data.blogs} />} />
+          <Route path='/all-inclusive' element={<AllInclusiveBlogs allInclusiveBlogs={data.allInclusiveBlogs} />} />
           <Route path='/beach-holidays' element={<Blogs blogs={data.blogs} />} />
           <Route path='/city-tours' element={<Blogs blogs={data.blogs} />} />
           <Route path='/' element={<Blogs blogs={data.nonspecialblogs} />} />

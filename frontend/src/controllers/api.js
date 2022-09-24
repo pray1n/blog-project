@@ -3,7 +3,6 @@ const url = 'http://localhost:8080'; //for mock objects
 async function getCategories() {
     const response = await fetch(url + '/categories');
     const result = await response.json();
-    console.log(result)
     return result;
 }
 

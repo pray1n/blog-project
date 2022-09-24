@@ -16,7 +16,7 @@ function App() {
         blogs: [],
         specialblogs: [],
         allInclusiveBlogs: [],
-        allBeachHolidaysBlogs: [],
+        beachHolidaysBlogs: [],
     })
     const [isDataLoading, setIsDataLoading] = useState(true)
 
@@ -83,7 +83,7 @@ function App() {
                             path="/beach-holidays"
                             element={
                                 <BeachHolidaysBlogs
-                                    blogs={data.beachHolidaysBlogs}
+                                beachHolidaysBlogs={data.beachHolidaysBlogs}
                                 />
                             }
                         />

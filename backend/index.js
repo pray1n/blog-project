@@ -1,7 +1,6 @@
 const express = require('express')
 const cors = require('cors')
 const app = express()
-const ejs = require('ejs')
 
 app.set('view engine', 'ejs')
 app.use(express.static('build'))

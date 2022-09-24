@@ -39,19 +39,16 @@ async function patchTable(table, fieldMapping, id, req) {
 }
 
 async function getBlogs() {
-    return pool
-        .query(
-            `select * FROM blog`
-        )
-        .then((data) => {
-            return data.rows
-        })
+    return pool.query(`select * FROM blog`).then((data) => {
+        return data.rows
+    })
 }
 
 async function getOneBlog(id) {
     return pool
         .query(
-            `title, date_time, author_name, content_text, picture, special, category_name from blog WHERE id = $1`,[id]
+            `SELECT title, date_time, author_name, content_text, picture, special, category_name from blog WHERE id = $1`,
+            [id]
         )
         .then((data) => {
             return data.rows
@@ -61,37 +58,35 @@ async function getOneBlog(id) {
 async function getCategories() {
     return pool.query('SELECT * from category').then((data) => {
         return data.rows
-    })}
+    })
+}
 
-
-
-    async function insertBlogPost(update) {
-        return pool
-            .query(
-                `
+async function insertBlogPost(update) {
+    return pool
+        .query(
+            `
     insert into blog (title, date_time, author_name, content_text, picture, special, category_name) 
     values ($1, $2, $3, $4, $5, $6, $7)
     returning *;`,
-                [
-                    update.title,
-                    date_time,
-                    author_name,
-                    content_text,
-                    picture,
-                    special,
-                    category_id,
-                ]
-            )
-            .then((data) => {
-                return data.rows
-            })
-    }
+            [
+                update.title,
+                date_time,
+                author_name,
+                content_text,
+                picture,
+                special,
+                category_id,
+            ]
+        )
+        .then((data) => {
+            return data.rows
+        })
+}
 
-    module.exports = {
-        patchTable,
-        getBlogs,
-        getOneBlog,
-        insertBlogPost,
-        getCategories,
-    }
-
+module.exports = {
+    patchTable,
+    getBlogs,
+    getOneBlog,
+    insertBlogPost,
+    getCategories,
+}

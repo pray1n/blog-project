@@ -49,9 +49,12 @@ async function getBlogs() {
 }
 
 async function getCategories() {
-    return pool.query('SELECT id, title').then((data) => {
+    return pool.query('SELECT id, name').then((data) => {
         return data.rows
-    })
+    })}
+
+
+
     async function insertBlogPost(update) {
         return pool
             .query(
@@ -80,4 +83,4 @@ async function getCategories() {
         insertBlogPost,
         getCategories,
     }
-}
+

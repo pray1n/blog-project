@@ -20,8 +20,8 @@ select * from blog;
 drop table blog;
 
 INSERT into category (name) values ('All-Inclusive');
-INSERT into category (name) values ('Beach holiday');
-INSERT into category (name) values ('City tours');
+INSERT into category (name) values ('Strandurlaub');
+INSERT into category (name) values ('Städtereisen');
 
 INSERT into blog (title, date_time, author_name, content_text, picture, special, category_id) values
 (
@@ -147,4 +147,51 @@ WHERE id = 2;
 UPDATE blog
 SET special = false
 WHERE id = 3;
+
+UPDATE blog
+SET category = false
+WHERE id = 3;
+
+ALTER TABLE "blog" DROP "category_id";
+ALTER TABLE blog
+ADD COLUMN category_name varchar(40);
+
+
+UPDATE blog
+SET category_name = 'all-inclusive'
+WHERE id = 1;
+
+UPDATE blog
+SET category_name = 'city-tours'
+WHERE id = 2;
+
+UPDATE blog
+SET category_name = 'city-tours'
+WHERE id = 3;
+
+UPDATE blog
+SET category_name = 'beach-holidays'
+WHERE id = 4;
+
+UPDATE blog
+SET category_name = 'city-tours'
+WHERE id = 5;
+
+UPDATE blog
+SET category_name = 'all-inclusive'
+WHERE id = 6;
+
+
+UPDATE blog
+SET category_name = 'beach-holidays'
+WHERE id = 7;
+
+UPDATE category
+SET name = 'beach-holidays'
+WHERE id = 2;
+
+UPDATE category
+SET name = 'city-tours'
+WHERE id = 3;
+
 

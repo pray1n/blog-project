@@ -10,6 +10,7 @@ export default function Blogs({blogs}) {
                 <NavLink className="link" to={blog_to}>Read more</NavLink>
             </section>
         );
+        
     });
 
     return (<>{li_blogs}</>);

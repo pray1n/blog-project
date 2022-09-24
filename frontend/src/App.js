@@ -16,6 +16,8 @@ function App() {
     const categories = await getCategories();
     const specialblogs = blogs.filter(blog => {return blog.special === true;});
     const nonspecialblogs = blogs.filter(blog => {return blog.special === false;});
+    const allInclusiveBlogs = categories.filter(categories => {return categories.name === 'All-Inclusive';});
+
     //console.log(specialblogs);
     setData((prev) => {return {...prev, categories, blogs, nonspecialblogs, specialblogs}});
     if(data)
@@ -41,6 +43,9 @@ function App() {
         </nav>
         <main>
         <Routes>
+          <Route path='/all-inclusive' element={<Blogs blogs={data.blogs} />} />
+          <Route path='/beach-holidays' element={<Blogs blogs={data.blogs} />} />
+          <Route path='/city-tours' element={<Blogs blogs={data.blogs} />} />
           <Route path='/' element={<Blogs blogs={data.nonspecialblogs} />} />
           <Route path="/:id" element={<Blogdetail blogs={data.blogs} />} />
         </Routes>

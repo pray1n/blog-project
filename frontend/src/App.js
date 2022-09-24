@@ -19,7 +19,7 @@ function App() {
     const allInclusiveBlogs = categories.filter(categories => {return categories.name === 'All-Inclusive';});
 
     //console.log(specialblogs);
-    setData((prev) => {return {...prev, categories, blogs, nonspecialblogs, specialblogs}});
+    setData((prev) => {return {...prev, categories, blogs, nonspecialblogs, specialblogs, allInclusiveBlogs}});
     if(data)
       setIsDataLoading(false);
   }

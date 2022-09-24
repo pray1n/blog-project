@@ -7,7 +7,7 @@ const blogs = [
         author_name:'Maurice',
         content_text:"Schnorchelausflug zur blauen Lagune Für 25,-$/Person kann man vom Resort aus mit dem Boot zum schnorcheln zur blauen Lagune fahren.",
         picture:"https://wetraveltheworld.de/wp-content/uploads/seychellen_sehenswurdigkeiten_beau-vallon-beach_01.jpg",
-        special: true,
+        special: false,
         category_id: 1
     },
     {

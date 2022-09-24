@@ -6,7 +6,7 @@ export default function Blogdetail({ blogs }) {
         return b.id === id
     })[0]
     //console.log(blog);
-    const bdate = new Date(blog.datetime).toLocaleDateString()
+    const bdate = new Date(blog.date_time).toLocaleDateString()
     return (
         <section className="preview" key={blog.id}>
             <h3>{blog.title}</h3>
@@ -14,7 +14,8 @@ export default function Blogdetail({ blogs }) {
                 from {bdate} by {blog.author_name}
             </p>
             <p>{blog.content_text}</p>
-            <img src={blog.picture} />
+            <img alt="meaningful text" src={blog.picture} />
         </section>
     )
 }
+

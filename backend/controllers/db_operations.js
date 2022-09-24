@@ -41,7 +41,17 @@ async function patchTable(table, fieldMapping, id, req) {
 async function getBlogs() {
     return pool
         .query(
-            `SELECT id, title, date_time, author_name, content_text, picture, special, category_name FROM blog`
+            `select * FROM blog`
+        )
+        .then((data) => {
+            return data.rows
+        })
+}
+
+async function getOneBlog(id) {
+    return pool
+        .query(
+            `title, date_time, author_name, content_text, picture, special, category_name from blog WHERE id = $1`,[id]
         )
         .then((data) => {
             return data.rows
@@ -49,7 +59,7 @@ async function getBlogs() {
 }
 
 async function getCategories() {
-    return pool.query('SELECT id, name').then((data) => {
+    return pool.query('SELECT * from category').then((data) => {
         return data.rows
     })}
 
@@ -59,7 +69,7 @@ async function getCategories() {
         return pool
             .query(
                 `
-    insert into blog (title, date_time, author_name, content_text, picture, special, category_id) 
+    insert into blog (title, date_time, author_name, content_text, picture, special, category_name) 
     values ($1, $2, $3, $4, $5, $6, $7)
     returning *;`,
                 [
@@ -80,6 +90,7 @@ async function getCategories() {
     module.exports = {
         patchTable,
         getBlogs,
+        getOneBlog,
         insertBlogPost,
         getCategories,
     }

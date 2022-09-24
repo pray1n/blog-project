@@ -32,7 +32,17 @@ function App() {
           <Categories categories={data.categories} />
         </nav>
         <main>
+<<<<<<< Updated upstream
           <Blogs blogs={data.blogs} />
+=======
+        <Routes>
+        <Route path='/all-inclusive' element={<Blogs blogs={data.blogs} />} />
+        <Route path='/beach-holiday' element={<Blogs blogs={data.blogs} />} />
+        <Route path='/city-tours' element={<Blogs blogs={data.blogs} />} />
+          <Route path='/' element={<Blogs blogs={data.blogs} />} />
+          <Route path="/:id" element={<Blogdetail blogs={data.blogs} />} />
+        </Routes>
+>>>>>>> Stashed changes
         </main>
         <aside>
             <h3>Special offers</h3>

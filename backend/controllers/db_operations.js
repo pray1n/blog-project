@@ -41,7 +41,7 @@ async function patchTable(table, fieldMapping, id, req) {
 async function getBlogs() {
     return pool
         .query(
-            `SELECT id, title, date_time, author_name, content_text, picture, special, category_id FROM blog`
+            `SELECT id, title, date_time, author_name, content_text, picture, special, category_name FROM blog`
         )
         .then((data) => {
             return data.rows

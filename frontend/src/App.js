@@ -16,10 +16,10 @@ function App() {
     const categories = await getCategories();
     const specialblogs = blogs.filter(blog => {return blog.special === true;});
     const nonspecialblogs = blogs.filter(blog => {return blog.special === false;});
-    const allInclusiveBlogs = categories.filter(categories => {return categories.name === 'All-Inclusive';});
+    //const allInclusiveBlogs = categories.filter(categories => {return categories.name === 'All-Inclusive';});
 
     //console.log(specialblogs);
-    setData((prev) => {return {...prev, categories, blogs, nonspecialblogs, specialblogs, allInclusiveBlogs}});
+    setData((prev) => {return {...prev, categories, blogs, nonspecialblogs, specialblogs}});
     if(data)
       setIsDataLoading(false);
   }

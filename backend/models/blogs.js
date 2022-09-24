@@ -1,4 +1,4 @@
-//title, date_time, author_name, content_text, picture, special, category_id
+//id, title, date_time, author_name, content_text, picture, special, category_id
 const blogs = [
     {
         id: 1,

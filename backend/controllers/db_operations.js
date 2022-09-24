@@ -2,7 +2,6 @@ const dotenv = require('dotenv'); //für .env file
 dotenv.config();
 const { Pool } = require('pg');
 
-
 const pool = new Pool({
     user: process.env.PG_USER,
     host: process.env.PG_HOST,
@@ -40,7 +39,7 @@ async function patchTable(table, fieldMapping, id, req) {
 }
 
 async function getBlogs() {
-    return pool.query(`SELECT title, date_time, author_name, content_text, picture, special, category_id FROM blog`)
+    return pool.query(`SELECT id, title, date_time, author_name, content_text, picture, special, category_id FROM blog`)
         .then((data) => {
             return data.rows;
         })
@@ -49,7 +48,7 @@ async function getBlogs() {
 async function insertBlogPost(update) {
     return pool.query(`
     insert into blog (title, date_time, author_name, content_text, picture, special, category_id) 
-    values ($1, $2, $3,$4,$5,$6,$7)
+    values ($1, $2, $3, $4, $5, $6, $7)
     returning *;`,
         [
             update.title,

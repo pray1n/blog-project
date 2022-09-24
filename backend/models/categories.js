@@ -6,11 +6,11 @@ const categories = [
     },
     {
         id: 2,
-        name:'Beach holiday'
+        name:'Beach-holiday'
     },
     {
         id: 3,
-        name:'City tours'
+        name:'City-tours'
     }
 ]
 

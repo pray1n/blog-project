@@ -140,3 +140,11 @@ INSERT into blog (title, date_time, author_name, content_text, picture, special,
     true,
     1
 );
+UPDATE blog
+SET special = false,
+WHERE id = 2;
+
+UPDATE blog
+SET special = false
+WHERE id = 3;
+

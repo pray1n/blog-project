@@ -15,8 +15,9 @@ function App() {
     const blogs = await getBlogs();
     const categories = await getCategories();
     const specialblogs = blogs.filter(blog => {return blog.special === true;});
+    const nonspecialblogs = blogs.filter(blog => {return blog.special === false;});
     //console.log(specialblogs);
-    setData((prev) => {return {...prev, categories, blogs, specialblogs}});
+    setData((prev) => {return {...prev, categories, blogs, nonspecialblogs, specialblogs}});
     if(data)
       setIsDataLoading(false);
   }
@@ -40,7 +41,7 @@ function App() {
         </nav>
         <main>
         <Routes>
-          <Route path='/' element={<Blogs blogs={data.blogs} />} />
+          <Route path='/' element={<Blogs blogs={data.nonspecialblogs} />} />
           <Route path="/:id" element={<Blogdetail blogs={data.blogs} />} />
         </Routes>
         </main>

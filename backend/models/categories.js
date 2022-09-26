@@ -2,15 +2,15 @@
 const categories = [
     {
         id: 1,
-        name:'All-Inclusive'
+        name:'all-inclusive'
     },
     {
         id: 2,
-        name:'Beach holiday'
+        name:'beach-holidays'
     },
     {
         id: 3,
-        name:'City tours'
+        name:'city-tours'
     }
 ]
 

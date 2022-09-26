@@ -6,6 +6,7 @@ import Blogs from './views/blogs'
 import SpecialBlogs from './views/specialblogs'
 import AllInclusiveBlogs from './views/allInclusiveBlogs'
 import BeachHolidaysBlogs from './views/beachHolidaysBlogs'
+import CityToursBlogs from './views/city-tours.js'
 
 import Blogdetail from './views/blogs_detail'
 import Loader from './views/loader'
@@ -17,6 +18,7 @@ function App() {
         specialblogs: [],
         allInclusiveBlogs: [],
         holidaysBlogs: [],
+        cityToursBlogs: [],
     })
     const [isDataLoading, setIsDataLoading] = useState(true)
 
@@ -35,7 +37,10 @@ function App() {
         const holidaysBlogs = blogs.filter((blog) => {
             return blog.category_name === 'beach-holidays'
         })
-        console.log('allInclusiveBlogs', allInclusiveBlogs)
+        const cityToursBlogs = blogs.filter((blog) => {
+            return blog.category_name === 'city-tours'
+        })
+        
         console.log('Blogs', blogs)
         setData((prev) => {
             return {
@@ -46,6 +51,7 @@ function App() {
                 specialblogs,
                 allInclusiveBlogs,
                 holidaysBlogs,
+                cityToursBlogs,
             }
         })
         if (data) setIsDataLoading(false)
@@ -90,14 +96,14 @@ function App() {
                         />
                         <Route
                             path="/city-tours"
-                            element={<Blogs blogs={data.blogs} />}
+                            element={<CityToursBlogs cityToursBlogs={data.cityToursBlogs} />}
                         />
                         <Route
                             path="/"
                             element={<Blogs blogs={data.nonspecialblogs} />}
                         />
                         <Route
-                            path="/:id"
+                            path="/all-inclusive/:id"
                             element={<Blogdetail blogs={data.blogs} />}
                         />
                     </Routes>

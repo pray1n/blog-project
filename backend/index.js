@@ -47,4 +47,13 @@ app.get('/blogs/:id', (req, res) => {
                 res.status(400).send({ error: err.message })
             })
     }),
+    app.post('/blog', (req, res) => {
+        insertBlogPost(req)
+            .then((data) => {
+                res.status(201).send(data)
+            })
+            .catch((err) => {
+                res.status(400).send({ error: err.message })
+            })
+    }),
     app.listen(port, () => console.log('Server listening at ' + port))

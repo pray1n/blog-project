@@ -12,7 +12,7 @@ async function getBlogs() {
     return result
 }
 
-async function postBlog(blog) {
+async function insertBlogPost(blog) {
     const response = await fetch(url + '/blog', {
         method: 'POST',
         headers: {
@@ -26,4 +26,4 @@ async function postBlog(blog) {
     throw Error('Adding blog failed')
 }
 
-export { getCategories, getBlogs, postBlog }
+export { getCategories, getBlogs, insertBlogPost }

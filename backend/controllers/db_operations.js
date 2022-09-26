@@ -69,13 +69,13 @@ async function insertBlogPost(update) {
     values ($1, $2, $3, $4, $5, $6, $7)
     returning *;`,
             [
-                update.title,
-                date_time,
-                author_name,
-                content_text,
-                picture,
-                special,
-                category_id,
+                update.body.title,
+                update.body.date_time,
+                update.body.author_name,
+                update.body.content_text,
+                update.body.picture,
+                update.body.special,
+                update.body.category_name,
             ]
         )
         .then((data) => {

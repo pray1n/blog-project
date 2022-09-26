@@ -1,17 +1,29 @@
-import { NavLink } from "react-router-dom"; 
+import { NavLink } from 'react-router-dom'
 
-export default function Categories({categories}) {
+export default function Categories({ categories }) {
     const li_categories = categories.map((category) => {
         return (
             <li key={category.id}>
-            <NavLink className="link" to={category.name}>{category.name}</NavLink>
+                <NavLink className="link" to={category.name}>
+                    {category.name}
+                </NavLink>
                 <ul className="dropdown" aria-label="submenu">
-                    <li><a href="#">Blog 2</a></li>
+                    <li>
+                        <a href="#">Blog 2</a>
+                    </li>
                 </ul>
-                
-        </li>
-        );
-    });
+            </li>
+        )
+    })
 
-    return (<ul>{li_categories}</ul>);
+    return (
+        <ul>
+            {li_categories}
+            <li>
+                <NavLink className="link" to={'/newblog'}>
+                    Add New blog
+                </NavLink>
+            </li>
+        </ul>
+    )
 }

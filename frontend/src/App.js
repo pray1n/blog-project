@@ -1,12 +1,12 @@
 import { Routes, Route } from 'react-router-dom'
 import { useState, useEffect } from 'react'
-import { getCategories, getBlogs, postBlog } from './controllers/api'
+import { getCategories, getBlogs, insertBlogPost } from './controllers/api'
 import Categories from './views/categories'
 import Blogs from './views/blogs'
 import SpecialBlogs from './views/specialblogs'
 import AllInclusiveBlogs from './views/allInclusiveBlogs'
 import BeachHolidaysBlogs from './views/beachHolidaysBlogs'
-
+import NewBlog from './views/NewBlog'
 import Blogdetail from './views/blogs_detail'
 import Loader from './views/loader'
 
@@ -19,7 +19,12 @@ function App() {
         holidaysBlogs: [],
     })
     const [isDataLoading, setIsDataLoading] = useState(true)
-
+    const addBlog = async (blog) => {
+        const newblog = await insertBlogPost(blog)
+        setData((prev) => {
+            return { ...prev, newblog }
+        })
+    }
     async function readData() {
         const blogs = await getBlogs()
         const categories = await getCategories()
@@ -35,6 +40,7 @@ function App() {
         const holidaysBlogs = blogs.filter((blog) => {
             return blog.category_name === 'beach-holidays'
         })
+
         console.log('allInclusiveBlogs', allInclusiveBlogs)
         console.log('Blogs', blogs)
         setData((prev) => {
@@ -84,7 +90,7 @@ function App() {
                             path="/beach-holidays"
                             element={
                                 <BeachHolidaysBlogs
-                                holidaysBlogs={data.holidaysBlogs}
+                                    holidaysBlogs={data.holidaysBlogs}
                                 />
                             }
                         />
@@ -99,6 +105,10 @@ function App() {
                         <Route
                             path="/:id"
                             element={<Blogdetail blogs={data.blogs} />}
+                        />
+                        <Route
+                            path="/newblog"
+                            element={<NewBlog addBlog={addBlog} />}
                         />
                     </Routes>
                 </main>

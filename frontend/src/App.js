@@ -87,6 +87,10 @@ function App() {
                             }
                         />
                         <Route
+                            path="/all-inclusive/:id"
+                            element={<Blogdetail blogs={data.blogs} />}
+                        />
+                        <Route
                             path="/beach-holidays"
                             element={
                                 <BeachHolidaysBlogs
@@ -95,17 +99,26 @@ function App() {
                             }
                         />
                         <Route
+                            path="/beach-holidays/:id"
+                            element={<Blogdetail blogs={data.blogs} />}
+                        />
+                        <Route
                             path="/city-tours"
                             element={<CityToursBlogs cityToursBlogs={data.cityToursBlogs} />}
+                        />
+                        <Route
+                            path="/city-tours/:id"
+                            element={<Blogdetail blogs={data.blogs} />}
                         />
                         <Route
                             path="/"
                             element={<Blogs blogs={data.nonspecialblogs} />}
                         />
                         <Route
-                            path="/all-inclusive/:id"
+                            path="/:id"
                             element={<Blogdetail blogs={data.blogs} />}
                         />
+                        
                     </Routes>
                 </main>
                 <aside>

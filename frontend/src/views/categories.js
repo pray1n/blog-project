@@ -5,11 +5,7 @@ export default function Categories({categories}) {
         return (
             <li key={category.id}>
             <NavLink className="link" to={category.name}>{category.name}</NavLink>
-                <ul className="dropdown" aria-label="submenu">
-                    <li><a href="#">Blog 2</a></li>
-                </ul>
-                
-        </li>
+            </li>
         );
     });
 

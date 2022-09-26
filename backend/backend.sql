@@ -196,4 +196,9 @@ UPDATE category
 SET name = 'city-tours'
 WHERE id = 3;
 
+UPDATE category
+SET name = 'all-inclusive'
+WHERE id = 1;
+
+
 

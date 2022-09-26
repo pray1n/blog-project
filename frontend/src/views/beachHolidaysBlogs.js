@@ -1,7 +1,14 @@
 import { NavLink } from "react-router-dom";
 
-export default function BeachHolidaysBlogs({beachHolidaysBlogs}) {
-    const li_beachHolidaysBlogs = beachHolidaysBlogs.map((blog) => {
+export default function BeachHolidaysBlogs({holidaysBlogs}) {
+    
+    if  (!Array.isArray(holidaysBlogs)) {
+        return(
+            <div>Loading...</div>
+        )
+    } 
+    const li_beachHolidaysBlogs = holidaysBlogs.map((blog) => {
+        
         const blog_to = "/beach-holidays/" + blog.id;
         return (
             <section className="preview" key={blog.id}>

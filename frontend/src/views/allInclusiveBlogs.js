@@ -1,6 +1,12 @@
 import { NavLink } from "react-router-dom";
 
 export default function AllInclusiveBlogs({allInclusiveBlogs}) {
+    if  (!Array.isArray(allInclusiveBlogs)) {
+        return(
+            <div>Loading...</div>
+        )
+    } 
+    
     const li_allInclusiveBlogs = allInclusiveBlogs.map((blog) => {
         const blog_to = "/all-inclusive/" + blog.id;
         return (

@@ -4,7 +4,7 @@ import { getCategories, getBlogs, postBlog } from './controllers/api'
 import Categories from './views/categories'
 import Blogs from './views/blogs'
 import SpecialBlogs from './views/specialblogs'
-import AllInclusiveBlogs from './views/beachHolidaysBlogs'
+import AllInclusiveBlogs from './views/allInclusiveBlogs'
 import BeachHolidaysBlogs from './views/beachHolidaysBlogs'
 
 import Blogdetail from './views/blogs_detail'
@@ -16,7 +16,7 @@ function App() {
         blogs: [],
         specialblogs: [],
         allInclusiveBlogs: [],
-        beachHolidaysBlogs: [],
+        holidaysBlogs: [],
     })
     const [isDataLoading, setIsDataLoading] = useState(true)
 
@@ -32,10 +32,11 @@ function App() {
         const allInclusiveBlogs = blogs.filter((blog) => {
             return blog.category_name === 'all-inclusive'
         })
-        const beachHolidaysBlogs = blogs.filter((blog) => {
+        const holidaysBlogs = blogs.filter((blog) => {
             return blog.category_name === 'beach-holidays'
         })
-
+        console.log('allInclusiveBlogs', allInclusiveBlogs)
+        console.log('Blogs', blogs)
         setData((prev) => {
             return {
                 ...prev,
@@ -44,7 +45,7 @@ function App() {
                 nonspecialblogs,
                 specialblogs,
                 allInclusiveBlogs,
-                beachHolidaysBlogs,
+                holidaysBlogs,
             }
         })
         if (data) setIsDataLoading(false)
@@ -83,7 +84,7 @@ function App() {
                             path="/beach-holidays"
                             element={
                                 <BeachHolidaysBlogs
-                                beachHolidaysBlogs={data.beachHolidaysBlogs}
+                                holidaysBlogs={data.holidaysBlogs}
                                 />
                             }
                         />

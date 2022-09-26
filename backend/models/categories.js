@@ -2,7 +2,7 @@
 const categories = [
     {
         id: 1,
-        name:'All-Inclusive'
+        name:'all-inclusive'
     },
     {
         id: 2,

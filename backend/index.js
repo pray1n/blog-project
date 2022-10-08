@@ -1,6 +1,7 @@
 const express = require('express')
 const cors = require('cors')
-const app = express()
+const useredit = require('./views/pages/useredit.ejs')
+
 
 app.set('view engine', 'ejs')
 app.use(express.static('build'))
@@ -17,6 +18,11 @@ const {
 
 //const port = process.env.PG_PORT || 8080;
 const port = 8080
+
+app.get('/useredit', (req, res) => {
+    res.render('pages/useredit')
+})
+
 
 app.get('/blogs', (req, res) => {
     //res.send(blogs); //for mock objects

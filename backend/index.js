@@ -5,10 +5,12 @@ const app = express()
 
 
 
+
 app.set('view engine', 'ejs')
 app.use(express.static('build'))
 app.use(cors())
 app.use(express.json())
+
 //const blogs = require('./models/blogs'); //mock objects
 //const categories = require('./models/categories'); //mock objects
 const {
@@ -22,7 +24,7 @@ const {
 const port = 8080
 
 app.get('/useredit', (req, res) => {
-    res.render('useredit.ejs')
+    res.render('pages/useredit.ejs')
 })
 
 

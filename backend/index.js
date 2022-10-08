@@ -1,6 +1,8 @@
 const express = require('express')
 const cors = require('cors')
-const useredit = require('./views/pages/useredit.ejs')
+const ejs = require('ejs')
+const app = express()
+
 
 
 app.set('view engine', 'ejs')
@@ -20,7 +22,7 @@ const {
 const port = 8080
 
 app.get('/useredit', (req, res) => {
-    res.render('pages/useredit')
+    res.render('useredit.ejs')
 })
 
 

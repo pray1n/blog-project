@@ -6,7 +6,9 @@ import Blogs from './views/blogs'
 import SpecialBlogs from './views/specialblogs'
 import AllInclusiveBlogs from './views/allInclusiveBlogs'
 import BeachHolidaysBlogs from './views/beachHolidaysBlogs'
-import NewBlog from './views/NewBlog'
+
+import CityToursBlogs from './views/city-tours.js'
+
 import Blogdetail from './views/blogs_detail'
 import Loader from './views/loader'
 
@@ -17,6 +19,7 @@ function App() {
         specialblogs: [],
         allInclusiveBlogs: [],
         holidaysBlogs: [],
+        cityToursBlogs: [],
     })
     const [isDataLoading, setIsDataLoading] = useState(true)
     const addBlog = async (blog) => {
@@ -41,7 +44,10 @@ function App() {
             return blog.category_name === 'beach-holidays'
         })
 
-        console.log('allInclusiveBlogs', allInclusiveBlogs)
+        const cityToursBlogs = blogs.filter((blog) => {
+            return blog.category_name === 'city-tours'
+        })
+
         console.log('Blogs', blogs)
         setData((prev) => {
             return {
@@ -52,6 +58,7 @@ function App() {
                 specialblogs,
                 allInclusiveBlogs,
                 holidaysBlogs,
+                cityToursBlogs,
             }
         })
         if (data) setIsDataLoading(false)
@@ -87,6 +94,10 @@ function App() {
                             }
                         />
                         <Route
+                            path="/all-inclusive/:id"
+                            element={<Blogdetail blogs={data.blogs} />}
+                        />
+                        <Route
                             path="/beach-holidays"
                             element={
                                 <BeachHolidaysBlogs
@@ -95,8 +106,16 @@ function App() {
                             }
                         />
                         <Route
+                            path="/beach-holidays/:id"
+                            element={<Blogdetail blogs={data.blogs} />}
+                        />
+                        <Route
                             path="/city-tours"
-                            element={<Blogs blogs={data.blogs} />}
+                            element={<CityToursBlogs cityToursBlogs={data.cityToursBlogs} />}
+                        />
+                        <Route
+                            path="/city-tours/:id"
+                            element={<Blogdetail blogs={data.blogs} />}
                         />
                         <Route
                             path="/"
@@ -106,10 +125,7 @@ function App() {
                             path="/:id"
                             element={<Blogdetail blogs={data.blogs} />}
                         />
-                        <Route
-                            path="/newblog"
-                            element={<NewBlog addBlog={addBlog} />}
-                        />
+
                     </Routes>
                 </main>
                 <aside>

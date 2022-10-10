@@ -102,6 +102,17 @@ async function addUser(email, password) {
         })
 }
 
+async function validateUser(email, password) {
+    return pool
+        .query(
+            `SELECT email,password from users WHERE email = $1, password=$2`,
+            [email, password]
+        )
+        .then((data) => {
+            return data.rows
+        })
+}
+
 module.exports = {
     patchTable,
     getBlogs,
@@ -110,4 +121,5 @@ module.exports = {
     getCategories,
     addUser,
     getUserByEmail,
+    validateUser,
 }

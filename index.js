@@ -4,7 +4,11 @@ const ejs = require('ejs')
 const app = express()
 const bodyParser = require('body-parser')
 const cookie = require('cookie-parser')
-const { addUser, getUserByEmail } = require('./controllers/db_operations')
+const {
+    addUser,
+    getUserByEmail,
+    validateUser,
+} = require('./controllers/db_operations')
 
 app.set('view engine', 'ejs')
 app.set('views', './views')
@@ -35,10 +39,9 @@ app.get('/register', (req, res) => {
 })
 app.post('/register', async (req, res, next) => {
     let { email, password } = req.body
-    console.log(req.body)
     try {
         const exist = await getUserByEmail(email)
-        console.log(exist)
+
         if (!exist.length > 0) {
             await addUser(email, password)
                 .then(() => {
@@ -63,9 +66,16 @@ app.get('/login', (req, res) => {
 app.post('/login', async (req, res) => {
     let { email, password } = req.body
     try {
-        let foundUser = await User.findOne({ email })
-    } catch (e) {
-        next(e)
+        const exist = await validateUser(email, password)
+
+        if (!exist.length > 0) {
+            res.redirect('/blogs')
+        } else {
+            // const error = 'Account does not exist, please register.'
+            res.render('./pages/register.ejs', { error })
+        }
+    } catch (err) {
+        next(err)
     }
 })
 

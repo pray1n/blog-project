@@ -9,6 +9,10 @@
   "author": "Ling, Justin, Tilo",
   "license": "ISC",
   "dependencies": {
+    "@emotion/styled": "^11.10.4",
+    "@material-ui/icons": "^4.11.3",
+    "@mui/icons-material": "^5.10.6",
+    "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dotenv": "^16.0.2",
     "ejs": "^3.1.8",

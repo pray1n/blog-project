@@ -14,10 +14,10 @@ create table blog (
     category_id integer
 );
 
-create talbe users(
+create table users(
     id serial primary key,
     email varchar(100),
-    password text(255),
+    password varchar(255)
 )
 
 select * from category;
@@ -148,6 +148,15 @@ INSERT into blog (title, date_time, author_name, content_text, picture, special,
     true,
     1
 );
+
+insert into users(email,password) values ('daniel@gmail.com', 'daniel001');
+insert into users(email,password) values ('florian@gmail.com', 'florian001');
+insert into users(email,password) values ('stephie@gmail.com', 'stephie001');
+insert into users(email,password) values('sandra@gmail.com', 'sandra001');
+insert into users(email,password) values ('ameli@gmail.com', 'ameli001');
+insert into users(email,password) values ('noah@gmail.com', 'noahl001');
+select * from users
+
 UPDATE blog
 SET special = false,
 WHERE id = 2;

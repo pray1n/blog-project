@@ -61,6 +61,14 @@ async function getCategories() {
     })
 }
 
+async function getUserByEmail(email) {
+    return pool
+        .query(`SELECT email from users WHERE email = $1`, [email])
+        .then((data) => {
+            return data.rows
+        })
+}
+
 async function insertBlogPost(update) {
     return pool
         .query(
@@ -83,10 +91,23 @@ async function insertBlogPost(update) {
         })
 }
 
+async function addUser(email, password) {
+    return pool
+        .query(
+            `INSERT INTO users (email, password) values ($1, $2) returning *;`,
+            [email, password]
+        )
+        .then((data) => {
+            return data.rows
+        })
+}
+
 module.exports = {
     patchTable,
     getBlogs,
     getOneBlog,
     insertBlogPost,
     getCategories,
+    addUser,
+    getUserByEmail,
 }

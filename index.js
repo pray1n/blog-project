@@ -6,7 +6,6 @@ const bodyParser = require('body-parser')
 const cookie = require('cookie-parser')
 const { addUser, getUserByEmail } = require('./controllers/db_operations')
 
-
 app.set('view engine', 'ejs')
 app.set('views', './views')
 app.use(express.static('build'))
@@ -28,8 +27,9 @@ const { NextPlan } = require('@mui/icons-material')
 //const port = process.env.PG_PORT || 8080;
 const port = 8080
 
-app.get('/useredit', (req, res) => {
-    res.render('pages/useredit.ejs')
+/* app.get('/useredit', (req, res) => {
+    res.render('pages/useredit.ejs') */
+
 app.get('/register', (req, res) => {
     res.render('./pages/register.ejs')
 })
@@ -59,6 +59,7 @@ app.post('/register', async (req, res, next) => {
 app.get('/login', (req, res) => {
     res.render('./pages/login.ejs')
 })
+
 app.post('/login', async (req, res) => {
     let { email, password } = req.body
     try {
@@ -77,17 +78,17 @@ app.get('/blogs', (req, res) => {
         .catch((err) => {
             res.status(400).send({ error: err.message })
         })
-})
-app.get('/blogs/:id', (req, res) => {
-    const { id } = req.params
-    getOneBlog(id)
-        .then((data) => {
-            res.json(data)
-        })
-        .catch((err) => {
-            res.status(400).send({ error: err.message })
-        })
 }),
+    app.get('/blogs/:id', (req, res) => {
+        const { id } = req.params
+        getOneBlog(id)
+            .then((data) => {
+                res.json(data)
+            })
+            .catch((err) => {
+                res.status(400).send({ error: err.message })
+            })
+    }),
     app.get('/categories', (req, res) => {
         getCategories()
             .then((data) => {

@@ -29,7 +29,7 @@ const {
 const { NextPlan } = require('@mui/icons-material')
 
 //const port = process.env.PG_PORT || 8080
-const port = 8080
+const PORT = 8080
 
 /* app.get('/useredit', (req, res) => {
     res.render('pages/useredit.ejs') */
@@ -117,6 +117,6 @@ app.get('/blogs', (req, res) => {
                 res.status(400).send({ error: err.message })
             })
     }),
-    app.listen(process.env.port, () =>
-        console.log('Server listening at ' + process.env.port)
+    app.listen(PORT, () =>
+        console.log('Server listening at ' + PORT)
     )

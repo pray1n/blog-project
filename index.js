@@ -117,4 +117,4 @@ app.get('/blogs', (req, res) => {
                 res.status(400).send({ error: err.message })
             })
     }),
-    app.listen(port, () => console.log('Server listening at ' + process.env.PORT))
+    app.listen(PORT, () => console.log('Server listening at ' + process.env.PORT))
